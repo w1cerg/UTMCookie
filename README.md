@@ -5,9 +5,12 @@ Class for store UTM from URL (GET)
 Notice: must be init before any output is sent to the browser
 
 Methods:
-first()
+
+first() -
   return array with first utm
-last()
+  
+last() -
   return array with last utm
-readURL()
+  
+readURL() -
   try to get UTM from URL and store in cookie
