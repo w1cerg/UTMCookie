@@ -34,6 +34,8 @@ class UTMCookie {
 			foreach ($this->utmList as $utm_value) 
 				if( !empty($_GET[$utm_value]) )
 					$utm[$utm_value] = $_GET[$utm_value];
+				else
+					$utm[$utm_value] = "";
 
 			$this->write( $utm );
 			return true;
