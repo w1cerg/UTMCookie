@@ -19,14 +19,15 @@ class UTMCookie {
 	function __construct(){
 		if( !empty($_COOKIE['UTMCOOKIE']) )
 			$this->UTM = json_decode($_COOKIE['UTMCOOKIE'], true);
-		setcookie('UTMCOOKIE', json_encode($this->UTM));
 	}
 
 	private function write( $input ){
-		if( empty($this->UTM['first']) )
-			$this->UTM['first'] = $input;
-		if( empty($this->UTM['last']) || $this->UTM['last']['utm_source'] != $input['utm_source'] )
+		if( empty($this->UTM['last']) || $this->UTM['last']['utm_source'] != $input['utm_source'] ){
 			$this->UTM['last'] = $input;
+			if( empty($this->UTM['first']) )
+				$this->UTM['first'] = $input;
+			setcookie('UTMCOOKIE', json_encode($this->UTM));
+		}
 	}
 
 	public function readURL(){
